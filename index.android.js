@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  TextInput
 } from 'react-native';
 
 class Greeting extends Component {
@@ -28,7 +29,10 @@ function Subtitle(props) {
 class AwesomeProject extends Component {
   constructor(props) {
     super(props);
-    this.state = {isEnglish: true}
+    this.state = {
+      isEnglish: true,
+      name: ''
+    }
 
     this.toggleLanguage = this.toggleLanguage.bind(this);
   }
@@ -42,8 +46,9 @@ class AwesomeProject extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <TextInput style={{width: 200, fontSize: 20}} placeholder='What is your name?' onChangeText={(text) => this.setState({name: text})} />
         <Text style={styles.welcome}>
-          <Greeting name='Sheena' language={this.state.isEnglish}/>
+          <Greeting name={this.state.name} language={this.state.isEnglish}/>
           {'\n'}
           <Subtitle language={this.state.isEnglish}/>
         </Text>
